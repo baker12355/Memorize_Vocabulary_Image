@@ -24,7 +24,7 @@ exist = os.listdir('img')
 exist = [e + '.csv' for e in exist]
 remainder = list(set(files) - set(exist))
 
-for file in tqdm_notebook(remainder, total=len(remainder)):
+for file in tqdm(remainder, total=len(remainder)):
     items = pd.read_csv('word/' + file, header=None).T.values[0]
     print ('Now running %s'%(file))
     category = file.split('.')[0]
@@ -37,7 +37,7 @@ for file in tqdm_notebook(remainder, total=len(remainder)):
     else:    
         print("Directory " , dirName ,  " already exists")
     
-    for item in tqdm_notebook(items, total=len(items)):
+    for item in tqdm(items, total=len(items)):
         item_len = len(item)
         url = 'https://www.google.com/search?biw=1164&bih=801&tbm=isch&sa=1&ei=WJZOXe35GsyWr7wPp8-d-Ao&q=%s&oq=%s\
         &gs_l=img.3..35i39j0l9.5946968.5948390..5948893...0.0..0.130.345.1j2......0....1..gws-wiz-img.....0.62GBiwmruak&ved=0ahUKEwjthdyshvjjAhVMy4sBHadnB68Q4dUDCAY&uact=5'%(item, item)
